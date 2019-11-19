@@ -3,7 +3,6 @@ import React, { useEffect, useState } from "react"
 import 'react-tabulator/lib/styles.css';
 import 'react-tabulator/lib/css/tabulator.min.css'; // theme
 import { ReactTabulator } from 'react-tabulator'
-import { HashRouter } from "react-router-dom";
 
 const Songs = ({ role }) => {
   const [roleValue, setRoleValue] = useState(role)
@@ -42,7 +41,7 @@ const Songs = ({ role }) => {
 
   const getColumns = (role) => {
     let columns = [
-      { title: 'Title', field: 'title', align: 'left', formatter: 'plaintext', frozen:true },
+      { title: 'Title', field: 'title', align: 'left', formatter: 'plaintext', frozen:true, headerFilter:"input"},
     ];
     if (!role || role === '' || role === 'all') {
       columns = columns.concat([
@@ -69,10 +68,9 @@ const Songs = ({ role }) => {
   }
 
   const updateFilters = ({ role }) => {
+    tableValue.table.clearFilter(true);
     if (role && role !== 'all') {
       tableValue.table.setFilter(role, '!=', '');
-    } else {
-      tableValue.table.clearFilter();
     }
   }
 
@@ -85,28 +83,26 @@ const Songs = ({ role }) => {
   }
 
   return <section>
-    <HashRouter basename={"/music"} hashType={"noslash"}>
-      <ul>
-        <li style={{ display: `inline-block`, marginRight: `1rem` }} onClick={() => {handleRoleValueChange('all')}}>
-          <Link to={"/music"} >All</Link>
-        </li>
-        <li style={{ display: `inline-block`, marginRight: `1rem` }} onClick={() => {handleRoleValueChange('ensemble')}}>
-          <Link to={"/music#ensemble"} >Ensemble</Link>
-        </li>
-        <li style={{ display: `inline-block`, marginRight: `1rem` }} onClick={() => {handleRoleValueChange('lead')}}>
-          <Link to={"/music#lead"} >Lead</Link>
-        </li>
-        <li style={{ display: `inline-block`, marginRight: `1rem` }} onClick={() => {handleRoleValueChange('tenor')}}>
-          <Link to={"/music#tenor"} >Tenor</Link>
-        </li>
-        <li style={{ display: `inline-block`, marginRight: `1rem` }} onClick={() => {handleRoleValueChange('baritone')}}>
-          <Link to={"/music#baritone"} >Baritone</Link>
-        </li>
-        <li style={{ display: `inline-block`, marginRight: `1rem` }} onClick={() => {handleRoleValueChange('bass')}}>
-          <Link to={"/music#bass"} >Bass</Link>
-        </li>
-      </ul>
-    </HashRouter>
+    <ul>
+      <li style={{ display: `inline-block`, marginRight: `1rem` }} onClick={() => {handleRoleValueChange('all')}}>
+        <Link to={"/music"} >All</Link>
+      </li>
+      <li style={{ display: `inline-block`, marginRight: `1rem` }} onClick={() => {handleRoleValueChange('ensemble')}}>
+        <Link to={"/music#ensemble"} >Ensemble</Link>
+      </li>
+      <li style={{ display: `inline-block`, marginRight: `1rem` }} onClick={() => {handleRoleValueChange('lead')}}>
+        <Link to={"/music#lead"} >Lead</Link>
+      </li>
+      <li style={{ display: `inline-block`, marginRight: `1rem` }} onClick={() => {handleRoleValueChange('tenor')}}>
+        <Link to={"/music#tenor"} >Tenor</Link>
+      </li>
+      <li style={{ display: `inline-block`, marginRight: `1rem` }} onClick={() => {handleRoleValueChange('baritone')}}>
+        <Link to={"/music#baritone"} >Baritone</Link>
+      </li>
+      <li style={{ display: `inline-block`, marginRight: `1rem` }} onClick={() => {handleRoleValueChange('bass')}}>
+        <Link to={"/music#bass"} >Bass</Link>
+      </li>
+    </ul>
     <ReactTabulator
       ref={ref => (ref = setTableValue(ref))}
       columns={columnsValue}
@@ -118,7 +114,6 @@ const Songs = ({ role }) => {
       reactiveData={true}
       persistentSort={true}
       persistentLayout={true}
-      persistentFilter={true}
     />
     </section>
 }
