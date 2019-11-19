@@ -6,25 +6,13 @@ import SEO from "../components/seo"
 import Songs from "../components/songs"
 
 const MusicPage = ({ location }) => {
-  const { state } = location || {}
-  const { filter } = state || {}
+  const { hash } = location || {}
+  const role = hash ? hash.substr(1) : ''
   return (<Layout>
     <SEO title="Music" />
-    <h1>Music Page</h1>
-    <ul>
-      <li style={{ display: `inline-block`, marginRight: `1rem` }}>
-        <Link to="/music">All</Link>
-      </li>
-      <li style={{ display: `inline-block`, marginRight: `1rem` }}>
-        <Link to="/music" state={{ filter: { role: 'lead' } }}>Lead</Link>
-      </li>
-      <li style={{ display: `inline-block`, marginRight: `1rem` }}>
-        <Link to="/music" state={{ filter: { role: 'tenor' } }}>Tenor</Link>
-      </li>
-    </ul>
-    <p>Welcome to music</p>
-    <Songs filter={filter}/>
-    <Link to="/">Go back to the homepage</Link>
+    <h1>Repertoire</h1>
+    <p>Click below to filter by roles.</p>
+    <Songs role={role}/>
   </Layout>)
 }
 
