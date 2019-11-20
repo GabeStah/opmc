@@ -1,19 +1,36 @@
 import React from "react"
-import { Link } from "gatsby"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import Songs from "../components/songs"
+import SongsClass from "../components/songs-class"
+import { graphql } from "gatsby"
 
-const MusicPage = ({ location }) => {
+const MusicPage = ({ data, location }) => {
   const { hash } = location || {}
   const role = hash ? hash.substr(1) : ''
+  const { nodes: songs } = data.allSongs;
   return (<Layout>
     <SEO title="Music" />
     <h1>Repertoire</h1>
     <p>Click below to filter by roles.</p>
-    <Songs role={role}/>
+    <SongsClass role={role} songs={songs}/>
   </Layout>)
 }
 
 export default MusicPage
+
+export const query = graphql`
+    query MusicQuery {
+        allSongs {
+            nodes {
+                id
+                baritone
+                bass
+                ensemble
+                lead
+                tenor
+                title
+            }
+        }
+    }
+`

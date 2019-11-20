@@ -1,28 +1,17 @@
-import { graphql, Link, useStaticQuery } from "gatsby"
-import React, { useEffect, useState } from "react"
+import { Link } from "gatsby"
+import React, { useState } from "react"
 import 'react-tabulator/lib/styles.css';
 import 'react-tabulator/lib/css/tabulator.min.css'; // theme
 import { ReactTabulator } from 'react-tabulator'
+import { useSongs } from '../data/use-songs'
 
 const Songs = ({ role }) => {
   const [roleValue, setRoleValue] = useState(role)
-  const [tableValue, setTableValue] = useState()
+  let [tableValue, setTableValue] = useState()
 
-  const data = useStaticQuery(graphql`
-      query SongQuery {
-          allSongs {
-              nodes {
-                  id
-                  baritone
-                  bass
-                  ensemble
-                  lead
-                  tenor
-                  title
-              }
-          }
-      }
-  `)
+  let tableRef = React.createRef()
+
+  const data = useSongs()
 
   const audioFormatter = (cell) => {
     const url = cell.getValue()
@@ -59,10 +48,10 @@ const Songs = ({ role }) => {
 
   const [columnsValue, setColumnsValue] = useState(getColumns(roleValue))
 
-  const getFilters = () => {
-    if (roleValue && roleValue !== 'all') {
+  const getFilters = ({ role }) => {
+    if (role && role !== 'all') {
       return [
-        {field: roleValue, type: '!=', value: ''}
+        {field: role, type: '!=', value: ''}
       ]
     }
   }
@@ -94,26 +83,26 @@ const Songs = ({ role }) => {
         <Link to={"/music#lead"} >Lead</Link>
       </li>
       <li style={{ display: `inline-block`, marginRight: `1rem` }} onClick={() => {handleRoleValueChange('tenor')}}>
-        <Link to={"/music#tenor"} >Tenor</Link>
+        Tenor
+        {/*<Link to={"/music#tenor"} >Tenor</Link>*/}
       </li>
       <li style={{ display: `inline-block`, marginRight: `1rem` }} onClick={() => {handleRoleValueChange('baritone')}}>
-        <Link to={"/music#baritone"} >Baritone</Link>
+        Baritone
+        {/*<Link to={"/music#baritone"} >Baritone</Link>*/}
       </li>
       <li style={{ display: `inline-block`, marginRight: `1rem` }} onClick={() => {handleRoleValueChange('bass')}}>
-        <Link to={"/music#bass"} >Bass</Link>
+        Bass
+        {/*<Link to={"/music#bass"} >Bass</Link>*/}
       </li>
     </ul>
     <ReactTabulator
-      ref={ref => (ref = setTableValue(ref))}
+      ref={ref => (tableRef = setTableValue(tableRef))}
       columns={columnsValue}
-      data={data.allSongs.nodes}
+      data={data}
       tooltips={tooltipFormatter}
-      initialFilter={getFilters()}
+      initialFilter={getFilters({role: roleValue})}
       // layout={"fitData"}
       responsiveLayout={"collapse"}
-      reactiveData={true}
-      persistentSort={true}
-      persistentLayout={true}
     />
     </section>
 }
