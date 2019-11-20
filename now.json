@@ -1,0 +1,10 @@
+{
+  "env": {
+    "GOOGLE_DRIVE_API_SECRET": "@google-drive-api-secret"
+  },
+  "build": {
+    "env": {
+      "GOOGLE_DRIVE_API_SECRET": "@google-drive-api-secret"
+    }
+  }
+}

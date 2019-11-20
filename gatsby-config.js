@@ -1,3 +1,5 @@
+require('dotenv').config()
+
 module.exports = {
   siteMetadata: {
     title: `Olympic Peninsula Men's Chorus`,
@@ -14,19 +16,19 @@ module.exports = {
       },
     },
     `gatsby-transformer-sharp`,
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `data`,
-        path: `${__dirname}/src/data/`,
-      },
-    },
-    {
-      resolve: `gatsby-transformer-csv`,
-      options: {
-        typeName: () => `Songs`,
-      },
-    },
+    // {
+    //   resolve: `gatsby-source-filesystem`,
+    //   options: {
+    //     name: `data`,
+    //     path: `${__dirname}/src/data/`,
+    //   },
+    // },
+    // {
+    //   resolve: `gatsby-transformer-csv`,
+    //   options: {
+    //     typeName: () => `Songs`,
+    //   },
+    // },
     `gatsby-plugin-sharp`,
     {
       resolve: `gatsby-plugin-manifest`,
@@ -39,6 +41,14 @@ module.exports = {
         display: `minimal-ui`,
         icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
       },
+    },
+    {
+      resolve: 'gatsby-source-google-sheets',
+      options: {
+        spreadsheetId: '1LFulCMFhNETB1qC026k8Vvp_EJ_PZqmEh7C4qLPqcjE',
+        worksheetTitle: 'site-data',
+        credentials: JSON.parse(process.env.GOOGLE_DRIVE_API_SECRET)
+      }
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
