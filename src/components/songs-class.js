@@ -24,7 +24,7 @@ class SongsClass extends React.Component {
 
   tooltipFormatter = (cell) => `${cell.getRow().getData().title} [${cell.getColumn().getField()}]`
 
-  getColumns = ({ role }) => {
+  getColumns = () => {
     return [
       { title: 'Title', field: 'title', align: 'left', formatter: 'plaintext', frozen: true, headerFilter: "input" },
       { title: 'Ensemble', field: 'ensemble', formatter: this.audioFormatter },
@@ -45,6 +45,10 @@ class SongsClass extends React.Component {
       layout: 'fitColumns',
       layoutColumnsOnNewData:true
     });
+
+    this.updateColumns({ role: this.props.role })
+
+    this.tabulator.redraw()
   }
 
   getFilters = ({ role }) => {
@@ -62,7 +66,7 @@ class SongsClass extends React.Component {
     }
   }
 
-  handleRoleValueChange({ role, table }) {
+  updateColumns = ({ role }) => {
     // Toggle columns.
     const columns = this.tabulator.getColumns()
     const defaultColumns = ['title', 'tags']
@@ -77,6 +81,10 @@ class SongsClass extends React.Component {
     } else {
       columns.forEach(column => column.show())
     }
+  }
+
+  handleRoleValueChange({ role }) {
+    this.updateColumns({ role })
 
     // Redraw to properly resize columns
     this.tabulator.redraw()
