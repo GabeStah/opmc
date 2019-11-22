@@ -11,7 +11,6 @@ const IndexPage = ({ data, location }) => {
   const { nodes: songs } = data.allGoogleSheetSiteDataRow;
   return (<Layout>
     <SEO title="Music" />
-    <h1>Repertoire</h1>
     <p>Filter by roles or search by title and tags.</p>
     <SongsClass role={role} songs={songs}/>
   </Layout>)

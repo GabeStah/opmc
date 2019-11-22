@@ -71,3 +71,4 @@ yarn-error.log
 # Idea
 .idea
 /src/credentials/client_secret.json
+/Landing-Page-master/
