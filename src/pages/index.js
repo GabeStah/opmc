@@ -11,6 +11,8 @@ const IndexPage = ({ data, location }) => {
   const { nodes: posts } = data.allWordpressPost
   const nonFeaturedPosts = posts.filter(post => post.categories.filter(category => category.name === 'Featured').length === 0)
   const featuredPosts = posts.filter(post => post.categories.filter(category => category.name === 'Featured').length > 0)
+    console.log(nonFeaturedPosts)
+    console.log(featuredPosts)
   return (
     <>
       <Layout>
