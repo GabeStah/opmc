@@ -21,7 +21,7 @@ export default class PostCard extends Component {
           {/*<p className="w-full text-gray-600 text-xs md:text-sm px-6">{this.state.post.title}</p>*/}
           <div className="w-full font-bold text-xl text-gray-800 px-6">{this.state.post.title}</div>
           <h5 className={"w-full text-sm text-gray-500 px-6"}>{moment(this.state.post.date).fromNow()}</h5>
-          <p className="text-gray-800 text-base px-6 mb-5" dangerouslySetInnerHTML={{ __html: this.state.post.excerpt && this.state.post.excerpt.length > 10 ? this.state.post.excerpt : this.state.post.content.substr(0, 300) }} />
+          <div className="text-gray-800 text-base px-6 mb-5" dangerouslySetInnerHTML={{ __html: this.state.post.excerpt && this.state.post.excerpt.length > 10 ? this.state.post.excerpt : this.state.post.content.substr(0, 300) }} />
         </Link>
       </div>
       {/*<div className="flex-none mt-auto bg-white rounded-b rounded-t-none overflow-hidden shadow p-6">*/}
