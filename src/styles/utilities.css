@@ -1,0 +1,11 @@
+.gradient {
+    background: linear-gradient(90deg, var(--secondary-color) 0%, var(--quinary-color) 50%);
+}
+
+.tabulator-page {
+    color: black;
+}
+
+.tabulator-page.active {
+    color: #E0ECF8;
+}

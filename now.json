@@ -1,10 +1,12 @@
 {
   "env": {
-    "GOOGLE_DRIVE_API_SECRET": "@google-drive-api-secret"
+    "GOOGLE_DRIVE_API_SECRET": "@google-drive-api-secret",
+    "WP_BASE_URL": "@wp-base-url"
   },
   "build": {
     "env": {
-      "GOOGLE_DRIVE_API_SECRET": "@google-drive-api-secret"
+      "GOOGLE_DRIVE_API_SECRET": "@google-drive-api-secret",
+      "WP_BASE_URL": "@wp-base-url"
     }
   }
 }

@@ -5,7 +5,7 @@ import "react-tabulator/lib/styles.css"
 import "react-tabulator/lib/css/tabulator.min.css" // theme
 import _ from "lodash"
 
-class SongsClass extends React.Component {
+class Songs extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -136,7 +136,7 @@ class SongsClass extends React.Component {
       <ul className={'py-4'}>
         {elements.map((value, index) => {
           return <button className={this.buttonClassName} key={value} onClick={() => {this.handleRoleValueChange({role: value, table: this.tabulator})}}>
-            <Link to={`/${value === 'all' ? '' : `#${value}`}`} >{value.substr(0, 1).toUpperCase() + value.substring(1)}</Link>
+            <Link to={`/music${value === 'all' ? '' : `#${value}`}`} >{value.substr(0, 1).toUpperCase() + value.substring(1)}</Link>
           </button>
         })}
         <li className={'inline-block px-2'}>
@@ -144,7 +144,7 @@ class SongsClass extends React.Component {
           <input placeholder={'Search'}
                  type={'search'}
                  className={'flex-1 bg-gray-200 hover:bg-white hover:border-gray-300 focus:outline-none focus:bg-white focus:shadow-outline focus:border-gray-300 appearance-none border border-transparent rounded w-full py-2 px-4 text-gray-700 leading-tight '}
-                 onInput={this.handleChange} value={this.state.searchText} />
+                 onChange={this.handleChange} value={this.state.searchText} />
           </form>
         </li>
       </ul>
@@ -153,4 +153,4 @@ class SongsClass extends React.Component {
   }
 }
 
-export default SongsClass
+export default Songs
