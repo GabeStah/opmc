@@ -16,7 +16,7 @@ export default class PostFeatured extends Component {
         <div className="w-5/6 sm:w-1/2 p-6">
           <h3 className="text-3xl text-gray-800 font-bold leading-none">{this.state.post.title}</h3>
           <h5 className={"mb-1 mt-2 text-sm"}>{moment(this.state.post.date).fromNow()}</h5>
-          <p className="text-gray-600 mb-8" dangerouslySetInnerHTML={{ __html: this.state.post.excerpt || this.state.post.content.substr(0, 300) }} />
+          <p className="text-gray-600 mb-8" dangerouslySetInnerHTML={{ __html: this.state.post.excerpt && this.state.post.excerpt.length > 10 ? this.state.post.excerpt : this.state.post.content.substr(0, 300) }} />
         </div>
         <div className="w-full sm:w-1/2 p-6">
           <img src={this.state.post.featured_media.source_url} alt={this.state.post.featured_media.alt_text}/>
