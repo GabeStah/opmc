@@ -10,7 +10,7 @@ export default class Post extends Component {
   }
 
   render () {
-    return <section className="bg-white border-b py-8">
+    return <section className="bg-white py-8">
       <div className="flex-1 bg-white rounded-t rounded-b-none overflow-hidden shadow">
         <div className="w-full sm:w-1/2 p-6">
           {this.state.post.featured_media && this.state.post.featured_media.source_url &&
