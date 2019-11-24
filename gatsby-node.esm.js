@@ -1,5 +1,5 @@
-import createMarkdownPages from "./src/pages/creators/markdown"
-import createWordpressPages from "./src/pages/creators/wordpress"
+import createMarkdownPages from "./src/templates/createMarkdownPages"
+import createWordpressPages from "./src/templates/wordpress"
 
 exports.createPages = async ({ graphql, actions, reporter }) => {
   await createMarkdownPages({ graphql, actions })

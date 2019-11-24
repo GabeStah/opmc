@@ -10,22 +10,6 @@ categories:
 
 This is my first test post.
 
-```js
-result.data.allWordpressPost.nodes.forEach(post => {
-  createPage({
-    path: post.path,
-    component: path.resolve(`../src/pages/post.js`),
-    context: {
-      // Data passed to context is available
-      // in page queries as GraphQL variables.
-      // slug: post.slug,
-      // path: post.path,
-      post: post,
-    },
-  })
-})
-```
-
 ## Here's a header
 
 Another thing.

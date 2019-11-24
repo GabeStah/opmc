@@ -5,9 +5,7 @@ import SEO from "../components/seo"
 import Post from "../components/post"
 import Page from "../components/page"
 
-export default function Template({
-  data, // this prop will be injected by the GraphQL query below.
-}) {
+export const MarkdownTemplate = ({data}) => {
   const { markdownRemark } = data // data.markdownRemark holds your post data
   const { frontmatter, html } = markdownRemark
   // Type
@@ -23,8 +21,6 @@ export default function Template({
     obj.featured_media = {
       source_url: frontmatter.image,
     }
-  } else if (type === 'page') {
-
   }
 
   return (
@@ -54,3 +50,5 @@ export const pageQuery = graphql`
     }
   }
 `
+
+export default MarkdownTemplate
