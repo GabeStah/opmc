@@ -1,4 +1,4 @@
-require('dotenv').config()
+require("dotenv").config()
 
 module.exports = {
   siteMetadata: {
@@ -15,6 +15,21 @@ module.exports = {
         path: `${__dirname}/src/images`,
       },
     },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `markdown-pages`,
+        path: `${__dirname}/src/markdown/pages`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `markdown-posts`,
+        path: `${__dirname}/src/markdown/posts`,
+      },
+    },
+    `gatsby-transformer-remark`,
     `gatsby-transformer-sharp`,
     // {
     //   resolve: `gatsby-source-filesystem`,
@@ -26,7 +41,7 @@ module.exports = {
     // {
     //   resolve: `gatsby-transformer-csv`,
     //   options: {
-    //     typeName: () => `Songs`,
+    //     typeName: () => `Roster`,
     //   },
     // },
     `gatsby-plugin-sharp`,
@@ -43,12 +58,20 @@ module.exports = {
       },
     },
     {
-      resolve: 'gatsby-source-google-sheets',
+      resolve: "gatsby-source-google-sheets",
       options: {
-        spreadsheetId: '1LFulCMFhNETB1qC026k8Vvp_EJ_PZqmEh7C4qLPqcjE',
-        worksheetTitle: 'site-data',
-        credentials: JSON.parse(process.env.GOOGLE_DRIVE_API_SECRET)
-      }
+        spreadsheetId: "1LFulCMFhNETB1qC026k8Vvp_EJ_PZqmEh7C4qLPqcjE",
+        worksheetTitle: "music",
+        credentials: JSON.parse(process.env.GOOGLE_DRIVE_API_SECRET),
+      },
+    },
+    {
+      resolve: "gatsby-source-google-sheets",
+      options: {
+        spreadsheetId: "1LFulCMFhNETB1qC026k8Vvp_EJ_PZqmEh7C4qLPqcjE",
+        worksheetTitle: "roster",
+        credentials: JSON.parse(process.env.GOOGLE_DRIVE_API_SECRET),
+      },
     },
     {
       resolve: "gatsby-source-wordpress",
@@ -149,14 +172,14 @@ module.exports = {
       },
     },
     {
-      resolve: 'gatsby-plugin-react-svg',
+      resolve: "gatsby-plugin-react-svg",
       options: {
         rule: {
-          include: `/\\.inline\\.svg$/`
-        }
-      }
+          include: `/\\.inline\\.svg$/`,
+        },
+      },
     },
-    `gatsby-plugin-postcss`
+    `gatsby-plugin-postcss`,
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,

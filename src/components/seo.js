@@ -72,7 +72,7 @@ function SEO({ description, lang, meta, title }) {
         },
       ].concat(meta)}
     >
-      <script type='text/javascript'>{`
+      <script type="text/javascript">{`
         let scrollpos = window.scrollY
         const header = document.getElementById("header")
         const navcontent = document.getElementById("nav-content")

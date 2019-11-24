@@ -51,7 +51,7 @@ const navMenu = document.getElementById("nav-toggle")
 document.onclick = check
 
 function check(e) {
-  const target = (e && e.target)
+  const target = e && e.target
 
   //Nav Menu
   if (!checkParent(target, navMenuDiv)) {

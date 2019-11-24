@@ -22,7 +22,7 @@ const Header = ({ siteTitle }) => (
         padding: `1.45rem 1.0875rem`,
       }}
     >
-      <h1 className={'font-sans text-4xl'}>
+      <h1 className={"font-sans text-4xl"}>
         <Link
           to="/"
           style={{

@@ -15,9 +15,9 @@ import Nav from "./nav"
 const Layout = ({ children }) => {
   return (
     <>
-      <Nav/>
-        <main id={'main'}>{children}</main>
-      <Footer/>
+      <Nav />
+      <main id={"main"}>{children}</main>
+      <Footer />
     </>
   )
 }
