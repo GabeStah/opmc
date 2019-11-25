@@ -73,14 +73,14 @@ export default class Nav extends Component {
                 </Link>
               </li>
             </ul>
-            <Link to={'/join'}>
+            <Link to={"/join"}>
               <button
                 className={
                   "bg-white text-gray-800 hover:bg-gray-400 hover:text-white"
                 }
                 id="navAction"
               >
-                  Join Us!
+                Join Us!
               </button>
             </Link>
           </div>

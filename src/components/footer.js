@@ -94,9 +94,7 @@ export default class Footer extends Component {
               </div>
               <div className="flex-1">
                 <p className="uppercase text-gray-800 md:mb-6">
-                  <Link to={'/contact'}>
-                    Contact Us
-                  </Link>
+                  <Link to={"/contact"}>Contact Us</Link>
                 </p>
                 <ul className="list-reset mb-6">
                   <li className="mt-2 inline-block mr-2 md:block md:mr-0">

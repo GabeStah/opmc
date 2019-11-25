@@ -15,6 +15,7 @@ OPMC is still focused on four part harmony and the barbershop style, but we are 
 ---
 
 ## Two Pies and a Pitchpipe
+
 ### The Origin of the Strait Men Chorus
 
 _by Mert Thornton_

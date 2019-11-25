@@ -5,18 +5,18 @@ import SEO from "../components/seo"
 import Post from "../components/post"
 import Page from "../components/page"
 
-export const MarkdownTemplate = ({data}) => {
+export const MarkdownTemplate = ({ data }) => {
   const { markdownRemark } = data // data.markdownRemark holds your post data
   const { frontmatter, html } = markdownRemark
   // Type
-  const type = frontmatter.type || 'post';
+  const type = frontmatter.type || "post"
 
   const obj = {
     content: html,
-    title: frontmatter.title
+    title: frontmatter.title,
   }
 
-  if (type === 'post') {
+  if (type === "post") {
     obj.date = frontmatter.date
     obj.featured_media = {
       source_url: frontmatter.image,
@@ -27,10 +27,7 @@ export const MarkdownTemplate = ({data}) => {
     <Layout>
       <SEO title="Blog Post" />
       <section className={"p-10 pt-32"}>
-        {type === 'post' ?
-          <Post post={obj} /> :
-          <Page page={obj} />
-        }
+        {type === "post" ? <Post post={obj} /> : <Page page={obj} />}
       </section>
     </Layout>
   )

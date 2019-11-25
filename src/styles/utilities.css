@@ -1,5 +1,5 @@
 .gradient {
-    background: linear-gradient(90deg, var(--secondary-color) 0%, var(--quinary-color) 50%);
+    background: linear-gradient(90deg, var(--primary-color) 0%, var(--senary-color) 50%);
 }
 
 .tabulator-page {

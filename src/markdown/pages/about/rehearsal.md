@@ -4,7 +4,7 @@ title: "Rehearsal"
 type: "page"
 ---
 
-The guys have their weekly rehearsals at the [Sunland Golf and Country Club in Sequim](https://goo.gl/maps/7wvHrNhFMZxknQRP9).  There are no auditions necessary, no prior singing experience is needed,  and you do not need to be able to read music.  You can drop in anytime to listen and see what it is all about.
+The guys have their weekly rehearsals at the [Sunland Golf and Country Club in Sequim](https://goo.gl/maps/7wvHrNhFMZxknQRP9). There are no auditions necessary, no prior singing experience is needed, and you do not need to be able to read music. You can drop in anytime to listen and see what it is all about.
 
 If you are a guy who likes to sing come on out.
 

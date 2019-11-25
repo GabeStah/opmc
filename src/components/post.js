@@ -18,7 +18,7 @@ export default class Post extends Component {
               this.state.post.featured_media.source_url && (
                 <img
                   src={this.state.post.featured_media.source_url}
-                  alt={this.state.post.featured_media.alt_text || ''}
+                  alt={this.state.post.featured_media.alt_text || ""}
                 />
               )}
           </div>

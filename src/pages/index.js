@@ -5,17 +5,18 @@ import Hero from "../components/hero"
 import PostList from "../components/postList"
 import Featured from "../components/featured"
 import Layout from "../components/layout"
-import { graphql } from "gatsby"
+import { graphql, Link } from "gatsby"
+import { getUser, isLoggedIn } from "../services/auth"
 
-const getPostsFromWordpress = (data) => {
+const getPostsFromWordpress = data => {
   const { nodes: posts } = data.allWordpressPost
-  return posts;
+  return posts
 }
 
-const getPostsFromMarkdown = (data) => {
+const getPostsFromMarkdown = data => {
   const { nodes: posts } = data.allMarkdownRemark
 
-  return posts;
+  return posts
 }
 
 const IndexPage = ({ data, location }) => {
@@ -35,6 +36,20 @@ const IndexPage = ({ data, location }) => {
       <Layout>
         <SEO title="Home" />
         <Hero />
+        {/*<h1>Hello {isLoggedIn() ? getUser().name : "world"}!</h1>*/}
+        {/*<p>*/}
+        {/*  {isLoggedIn() ? (*/}
+        {/*    <>*/}
+        {/*      You are logged in, so check your{" "}*/}
+        {/*      <Link to="/app/profile">profile</Link>*/}
+        {/*    </>*/}
+        {/*  ) : (*/}
+        {/*    <>*/}
+        {/*      You should <Link to="/app/login">log in</Link> to see restricted*/}
+        {/*      content*/}
+        {/*    </>*/}
+        {/*  )}*/}
+        {/*</p>*/}
         <Featured posts={featuredPosts} />
         <PostList posts={nonFeaturedPosts} />
         {/*<Pricing/>*/}

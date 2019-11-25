@@ -26,7 +26,9 @@ class Roster extends React.Component {
     const address = cell.getValue()
     if (address) {
       // console.log(encodeURI(address))
-      const searchUrl = `https://www.google.com/maps/search/${encodeURI(address)}`
+      const searchUrl = `https://www.google.com/maps/search/${encodeURI(
+        address
+      )}`
       return `<a class="w-full h-8 inline-block mx-auto hover:text-blue-400" target="_blank"
             href=${searchUrl}>${address}
           </a>`
@@ -100,7 +102,7 @@ class Roster extends React.Component {
         title: "Address",
         field: "address",
         responsive: 6,
-        formatter: this.addressFormatter
+        formatter: this.addressFormatter,
       },
       {
         title: "Phone",
@@ -122,11 +124,11 @@ class Roster extends React.Component {
         title: "Active",
         field: "active",
         responsive: 3,
-        headerFilter: 'select',
+        headerFilter: "select",
         headerFilterParams: {
-          'yes': 'Yes',
-          'no': 'No'
-        }
+          yes: "Yes",
+          no: "No",
+        },
       },
     ]
   }

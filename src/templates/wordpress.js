@@ -1,4 +1,4 @@
-import path from 'path'
+import path from "path"
 
 const wordpress = async ({ graphql, actions }) => {
   const { createPage } = actions

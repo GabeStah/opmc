@@ -1,13 +1,24 @@
 import React, { Component } from "react"
-import ComposeMusicImage from "-!svg-react-loader!../images/svg/undraw_compose_music_ovo2.svg"
-import { Link } from 'gatsby'
+import { StaticQuery, graphql, Link } from "gatsby"
+import Img from "gatsby-image"
 
-export default class Hero extends Component {
-  render() {
-    return (
+export default () => (
+  <StaticQuery
+    query={graphql`
+      query {
+        heroImage: file(relativePath: { eq: "opmc-all.jpg" }) {
+          childImageSharp {
+            fluid(maxWidth: 1000) {
+              ...GatsbyImageSharpFluid
+            }
+          }
+        }
+      }
+    `}
+    render={data => (
       <section className={"gradient"}>
         <div className="pt-24">
-          <div className="container px-3 mx-auto flex flex-wrap flex-col md:flex-row items-center">
+          <div className="container px-3 mx-auto flex flex-wrap flex-col md:flex-row items-center mb-12">
             <div className="flex flex-col w-full md:w-2/5 justify-center items-start text-center md:text-left">
               <p className="uppercase tracking-loose w-full">
                 Do you like to sing?
@@ -26,7 +37,10 @@ export default class Hero extends Component {
               </Link>
             </div>
             <div className="w-full md:w-3/5 py-6 text-center">
-              <ComposeMusicImage className={"w-full"} />
+              <Img
+                fluid={data.heroImage.childImageSharp.fluid}
+                className={"w-full shadow-md"}
+              />
             </div>
           </div>
         </div>
@@ -67,6 +81,6 @@ export default class Hero extends Component {
           </svg>
         </div>
       </section>
-    )
-  }
-}
+    )}
+  />
+)
