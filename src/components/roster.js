@@ -3,12 +3,17 @@ import Tabulator from "tabulator-tables"
 import "react-tabulator/lib/styles.css"
 import "react-tabulator/lib/css/tabulator.min.css" // theme
 import _ from "lodash"
+import { graphql, StaticQuery } from "gatsby"
+import SEO from "./seo"
 
 class Roster extends React.Component {
   constructor(props) {
     super(props)
+    const { data } = props
+    const { nodes: roster } = data.allGoogleSheetRosterRow
     this.state = {
       searchText: "",
+      roster: roster,
     }
 
     this.handleChange = this.handleChange.bind(this)
@@ -25,7 +30,6 @@ class Roster extends React.Component {
   addressFormatter = cell => {
     const address = cell.getValue()
     if (address) {
-      // console.log(encodeURI(address))
       const searchUrl = `https://www.google.com/maps/search/${encodeURI(
         address
       )}`
@@ -136,7 +140,7 @@ class Roster extends React.Component {
   componentDidMount() {
     //instantiate Tabulator when element is mounted
     this.tabulator = new Tabulator(this.el, {
-      data: this.props.roster || [], //link data to table
+      data: this.state.roster || [], //link data to table
       columns: this.getColumns(), //define table columns
       responsiveLayout: "collapse",
       tooltips: this.tooltipFormatter,
@@ -198,44 +202,71 @@ class Roster extends React.Component {
   render() {
     // const elements = ["all", "ensemble", "lead", "tenor", "baritone", "bass"]
     return (
-      <section className={"bg-white rounded-t-lg overflow-hidden py-2"}>
-        <ul className={"py-4 ml-0"}>
-          {/*{elements.map((value, index) => {*/}
-          {/*  return (*/}
-          {/*    <button*/}
-          {/*      className={this.buttonClassName}*/}
-          {/*      key={value}*/}
-          {/*      onClick={() => {*/}
-          {/*        this.handleRoleValueChange({*/}
-          {/*          role: value,*/}
-          {/*          table: this.tabulator,*/}
-          {/*        })*/}
-          {/*      }}*/}
-          {/*    >*/}
-          {/*      <Link to={`/music${value === "all" ? "" : `#${value}`}`}>*/}
-          {/*        {value.substr(0, 1).toUpperCase() + value.substring(1)}*/}
-          {/*      </Link>*/}
-          {/*    </button>*/}
-          {/*  )*/}
-          {/*})}*/}
-          <li className={"inline-block px-1"}>
-            <form>
-              <input
-                placeholder={"Search"}
-                type={"search"}
-                className={
-                  "flex-1 bg-gray-200 hover:bg-white hover:border-gray-300 focus:outline-none focus:bg-white focus:shadow-outline focus:border-gray-300 appearance-none border border-transparent rounded w-full py-2 px-4 text-gray-700 leading-tight "
-                }
-                onChange={this.handleChange}
-                value={this.state.searchText}
-              />
-            </form>
-          </li>
-        </ul>
-        <div ref={el => (this.el = el)} />
-      </section>
+      <>
+        <SEO title="Roster" />
+        <section
+          className={"bg-white rounded-t-lg overflow-hidden py-2 pt-32 p-10"}
+        >
+          <p>Search by name, spouse, and email.</p>
+          <ul className={"py-4 ml-0"}>
+            {/*{elements.map((value, index) => {*/}
+            {/*  return (*/}
+            {/*    <button*/}
+            {/*      className={this.buttonClassName}*/}
+            {/*      key={value}*/}
+            {/*      onClick={() => {*/}
+            {/*        this.handleRoleValueChange({*/}
+            {/*          role: value,*/}
+            {/*          table: this.tabulator,*/}
+            {/*        })*/}
+            {/*      }}*/}
+            {/*    >*/}
+            {/*      <Link to={`/music${value === "all" ? "" : `#${value}`}`}>*/}
+            {/*        {value.substr(0, 1).toUpperCase() + value.substring(1)}*/}
+            {/*      </Link>*/}
+            {/*    </button>*/}
+            {/*  )*/}
+            {/*})}*/}
+            <li className={"inline-block px-1"}>
+              <form>
+                <input
+                  placeholder={"Search"}
+                  type={"search"}
+                  className={
+                    "flex-1 bg-gray-200 hover:bg-white hover:border-gray-300 focus:outline-none focus:bg-white focus:shadow-outline focus:border-gray-300 appearance-none border border-transparent rounded w-full py-2 px-4 text-gray-700 leading-tight "
+                  }
+                  onChange={this.handleChange}
+                  value={this.state.searchText}
+                />
+              </form>
+            </li>
+          </ul>
+          <div ref={el => (this.el = el)} />
+        </section>
+      </>
     )
   }
 }
 
-export default Roster
+export default props => (
+  <StaticQuery
+    query={graphql`
+      query RosterQuery {
+        allGoogleSheetRosterRow {
+          nodes {
+            active
+            address
+            cell
+            email
+            firstname
+            lastname
+            part
+            phone
+            spouse
+          }
+        }
+      }
+    `}
+    render={data => <Roster data={data} {...props} />}
+  />
+)

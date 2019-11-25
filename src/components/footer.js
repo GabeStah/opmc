@@ -1,5 +1,6 @@
 import React, { Component } from "react"
-import { Link } from "gatsby"
+import { Link, navigate } from "gatsby"
+import { isLoggedIn, logout } from "../services/auth"
 
 export default class Footer extends Component {
   render() {
@@ -133,7 +134,7 @@ export default class Footer extends Component {
                 <ul className="list-reset mb-6">
                   <li className="mt-2 inline-block mr-2 md:block md:mr-0">
                     <Link
-                      to={"/roster"}
+                      to={"/members/roster"}
                       className="no-underline hover:underline text-gray-700 hover:text-orange-500"
                     >
                       Roster
@@ -155,6 +156,20 @@ export default class Footer extends Component {
                       Repertoire
                     </Link>
                   </li>
+                  {isLoggedIn() ? (
+                    <li className="mt-2 inline-block mr-2 md:block md:mr-0">
+                      <Link
+                        className="no-underline hover:underline text-gray-700 hover:text-orange-500"
+                        onClick={event => {
+                          event.preventDefault()
+                          logout(() => navigate(`/`))
+                        }}
+                        to={"/"}
+                      >
+                        Logout
+                      </Link>
+                    </li>
+                  ) : null}
                 </ul>
               </div>
             </div>

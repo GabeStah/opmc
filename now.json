@@ -1,11 +1,13 @@
 {
   "env": {
     "GOOGLE_DRIVE_API_SECRET": "@google-drive-api-secret",
+    "OPMC_MEMBER_PASSWORD": "@opmc-member-password",
     "WP_BASE_URL": "@wp-base-url"
   },
   "build": {
     "env": {
       "GOOGLE_DRIVE_API_SECRET": "@google-drive-api-secret",
+      "OPMC_MEMBER_PASSWORD": "@opmc-member-password",
       "WP_BASE_URL": "@wp-base-url"
     }
   }

@@ -1,4 +1,4 @@
-import { Link } from "gatsby"
+import { Link} from "gatsby"
 import React, { Component } from "react"
 
 export default class Nav extends Component {
@@ -67,7 +67,8 @@ export default class Nav extends Component {
               <li className="mr-3">
                 <Link
                   className="inline-block text-black no-underline hover:text-gray-800 hover:text-underline py-2 px-4"
-                  to={"/roster"}
+                  to={"/members/roster"}
+                  state={{ prevPath: "/members/roster" }}
                 >
                   Roster
                 </Link>

@@ -1,17 +1,17 @@
 // https://www.gatsbyjs.org/tutorial/authentication-tutorial/
 export const isBrowser = () => typeof window !== "undefined"
 export const getUser = () =>
-  isBrowser() && window.localStorage.getItem("gatsbyUser")
-    ? JSON.parse(window.localStorage.getItem("gatsbyUser"))
+  isBrowser() && window.localStorage.getItem("opmcUser")
+    ? JSON.parse(window.localStorage.getItem("opmcUser"))
     : {}
 const setUser = user =>
-  window.localStorage.setItem("gatsbyUser", JSON.stringify(user))
-export const handleLogin = ({ username, password }) => {
-  if (username === `john` && password === `pass`) {
+  window.localStorage.setItem("opmcUser", JSON.stringify(user))
+export const handleLogin = ({ password }) => {
+  if (password === process.env.OPMC_MEMBER_PASSWORD) {
     return setUser({
-      username: `john`,
-      name: `Johnny`,
-      email: `johnny@example.org`,
+      username: `opmcmember`,
+      name: `John Doe`,
+      email: `john@opmenschorus.com`,
     })
   }
   return false

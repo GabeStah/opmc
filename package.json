@@ -30,7 +30,8 @@
     "react-dom": "^16.11.0",
     "react-helmet": "^5.2.1",
     "react-tabulator": "^0.10.3",
-    "tabulator-tables": "latest"
+    "tabulator-tables": "latest",
+    "@reach/router": "latest"
   },
   "devDependencies": {
     "prettier": "^1.19.1",
