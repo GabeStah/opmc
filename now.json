@@ -14,11 +14,11 @@
   "routes": [
     {
       "src": "/members/login",
-      "dest": "/members"
+      "dest": "index.html"
     },
     {
       "src": "/members/roster",
-      "dest": "/members"
+      "dest": "index.html"
     }
   ]
 }
