@@ -14,10 +14,10 @@ class Login extends React.Component {
     },
   }
 
-  handleKeyDown = event => {
+  handleKeyDown = async event => {
     if (event.key === 'Enter') {
       event.preventDefault()
-      if (handleLogin(this.state)) {
+      if (await handleLogin(this.state)) {
         navigate(this.state.prevPath || `/`)
       } else {
         this.setState((state, props) => {
@@ -39,9 +39,9 @@ class Login extends React.Component {
     })
   }
 
-  handleSubmit = event => {
+  handleSubmit = async event => {
     event.preventDefault()
-    if (handleLogin(this.state)) {
+    if (await handleLogin(this.state)) {
       navigate(this.state.prevPath || `/`)
     } else {
       this.setState((state, props) => {
@@ -73,8 +73,9 @@ class Login extends React.Component {
           <form
             className="w-full max-w-sm pt-5"
             onSubmit={event => {
-              this.handleSubmit(event)
-              navigate(this.state.prevPath || `/`)
+              this.handleSubmit(event).then(r => {
+                navigate(this.state.prevPath || `/`)
+              })
             }}
           >
             <div className="md:flex md:items-center mb-6">
@@ -103,7 +104,9 @@ class Login extends React.Component {
                   className="shadow bg-blue-300 hover:bg-blue-200 focus:shadow-outline focus:outline-none text-white font-bold ml-4 py-2 px-4 rounded"
                   type="button"
                   onClick={event => {
-                    this.handleSubmit(event)
+                    this.handleSubmit(event).then(r => {
+                      console.log(`logging in`)
+                    })
                   }}
                 >
                   Login

@@ -6,8 +6,10 @@ export const getUser = () =>
     : {}
 export const setUser = user =>
   window.localStorage.setItem("opmcUser", JSON.stringify(user))
-export const handleLogin = ({ password }) => {
-  if (password === process.env.OPMC_MEMBER_PASSWORD) {
+export const handleLogin = async ({ password }) => {
+  const res = await fetch(`/api/auth?password=${password}`)
+  const success = await res.text()
+  if (success === 'true') {
     return setUser({
       username: `opmcmember`,
       name: `John Doe`,
