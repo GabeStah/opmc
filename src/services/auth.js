@@ -7,6 +7,9 @@ export const getUser = () =>
 const setUser = user =>
   window.localStorage.setItem("opmcUser", JSON.stringify(user))
 export const handleLogin = ({ password }) => {
+  console.log(`handleLogin`)
+  console.log(`password: ${password}`)
+  console.log(`OPMC_MEMBER_PASSWORD: ${process.env.OPMC_MEMBER_PASSWORD}`)
   if (password === process.env.OPMC_MEMBER_PASSWORD) {
     return setUser({
       username: `opmcmember`,
