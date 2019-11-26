@@ -5,6 +5,7 @@
   "version": "0.1.0",
   "author": "Gabe Wyatt <gabe@gabewyatt.com>",
   "dependencies": {
+    "@reach/router": "latest",
     "dotenv": "^8.2.0",
     "esm": "^3.2.25",
     "gatsby": "^2.17.11",
@@ -24,14 +25,14 @@
     "google-spreadsheet": "^2.0.8",
     "lodash": "^4.17.15",
     "moment": "^2.24.0",
+    "now": "^16.6.0",
     "postcss-import": "^12.0.1",
     "prop-types": "^15.7.2",
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
     "react-helmet": "^5.2.1",
     "react-tabulator": "^0.10.3",
-    "tabulator-tables": "latest",
-    "@reach/router": "latest"
+    "tabulator-tables": "latest"
   },
   "devDependencies": {
     "prettier": "^1.19.1",
