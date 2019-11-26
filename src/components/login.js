@@ -14,6 +14,25 @@ class Login extends React.Component {
     },
   }
 
+  handleKeyDown = event => {
+    if (event.key === 'Enter') {
+      event.preventDefault()
+      if (handleLogin(this.state)) {
+        navigate(this.state.prevPath || `/`)
+      } else {
+        this.setState((state, props) => {
+          return {
+            alert: {
+              title: "Invalid Password",
+              message:
+                "The password you entered is incorrect.  Please try again.",
+            },
+          }
+        })
+      }
+    }
+  }
+
   handleUpdate = event => {
     this.setState({
       [event.target.name]: event.target.value,
@@ -74,7 +93,9 @@ class Login extends React.Component {
                   type="password"
                   placeholder="**********"
                   name="password"
+                  autoComplete={'new-password'}
                   onChange={this.handleUpdate}
+                  onKeyDown={this.handleKeyDown}
                 />
               </div>
               <div className="md:w-1/3">
@@ -91,7 +112,7 @@ class Login extends React.Component {
             </div>
             <div className="md:flex md:items-center">
               <div className="md:w-1/3" />
-              <div className="md:w-2/3"></div>
+              <div className="md:w-2/3"/>
             </div>
           </form>
         </section>

@@ -10,5 +10,15 @@
       "OPMC_MEMBER_PASSWORD": "@opmc-member-password",
       "WP_BASE_URL": "@wp-base-url"
     }
-  }
+  },
+  "routes": [
+    {
+      "src": "/members/login",
+      "dest": "/members"
+    },
+    {
+      "src": "/members/roster",
+      "dest": "/members"
+    }
+  ]
 }
