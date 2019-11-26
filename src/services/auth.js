@@ -4,7 +4,7 @@ export const getUser = () =>
   isBrowser() && window.localStorage.getItem("opmcUser")
     ? JSON.parse(window.localStorage.getItem("opmcUser"))
     : {}
-const setUser = user =>
+export const setUser = user =>
   window.localStorage.setItem("opmcUser", JSON.stringify(user))
 export const handleLogin = ({ password }) => {
   if (password === process.env.OPMC_MEMBER_PASSWORD) {
