@@ -7,27 +7,20 @@ import Featured from "../components/featured"
 import Layout from "../components/layout"
 import { graphql } from "gatsby"
 
-const getPostsFromWordpress = data => {
-  const { nodes: posts } = data.allWordpressPost
-  return posts
-}
-
 const getPostsFromMarkdown = data => {
   const { nodes: posts } = data.allMarkdownRemark
   return posts
 }
 
-const IndexPage = ({ data, location }) => {
-  const { nodes: posts } = data.allWordpressPost
+const IndexPage = ({ data}) => {
+  const posts = getPostsFromMarkdown(data)
   const nonFeaturedPosts = posts.filter(
     post =>
-      post.categories.filter(category => category.name === "Featured")
-        .length === 0
+      post.frontmatter.featured === false
   )
   const featuredPosts = posts.filter(
     post =>
-      post.categories.filter(category => category.name === "Featured").length >
-      0
+      post.frontmatter.featured === true
   )
   return (
     <>
@@ -53,112 +46,82 @@ const IndexPage = ({ data, location }) => {
 
 export default IndexPage
 
-// export const postList = graphql`
-//   query AllPostsQuery {
-//     allMarkdownRemark {
-//         nodes {
-//             frontmatter {
-//                 date
-//                 image
-//                 path
-//                 title
-//                 type
-//             }
-//             excerpt
-//             fileAbsolutePath
-//             html
-//             id
-//             internal {
-//                 content
-//                 type
-//                 owner
-//                 mediaType
-//                 ignoreType
-//                 fieldOwners
-//                 description
-//                 contentDigest
-//             }
-//             tableOfContents
-//             rawMarkdownBody
-//             wordCount {
-//                 words
-//                 sentences
-//                 paragraphs
-//             }
-//         }
-//     }
-//     allWordpressPost {
-//         nodes {
-//             content
-//             date
-//             template
-//             title
-//             type
-//             sticky
-//             slug
-//             path
-//             modified
-//             link
-//             guid
-//             format
-//             excerpt
-//             comment_status
-//             featured_media {
-//                 alt_text
-//                 caption
-//                 id
-//                 link
-//                 path
-//                 mime_type
-//                 media_type
-//                 source_url
-//                 title
-//             }
-//             categories {
-//                 name
-//                 path
-//                 slug
-//             }
-//         }
-//     }
-//   }
-// `
-//
-export const postList = graphql`
+export const postList = graphql`  
   query AllPostsQuery {
-    allWordpressPost {
-      nodes {
-        content
-        date
-        template
-        title
-        type
-        sticky
-        slug
-        path
-        modified
-        link
-        guid
-        format
-        excerpt
-        comment_status
-        featured_media {
-          alt_text
-          caption
-          id
-          link
-          path
-          mime_type
-          media_type
-          source_url
-          title
+    allMarkdownRemark(
+        filter: { frontmatter: { type: { eq: "post" } } }
+        sort: { order: DESC, fields: [frontmatter___date] }
+        limit: 1000
+    ) {
+        nodes {
+            fields {
+                slug
+            }
+            frontmatter {
+                date
+                featured
+                image
+                tags
+                title
+                type
+            }
+            excerpt
+            fileAbsolutePath
+            html
+            id
+            internal {
+                content
+                type
+                owner
+                description
+            }
+            tableOfContents
+            rawMarkdownBody
+            wordCount {
+                words
+                sentences
+                paragraphs
+            }
         }
-        categories {
-          name
-          path
-          slug
-        }
-      }
     }
   }
 `
+
+// export const postList = graphql`
+//   query AllPostsQuery {
+//     allWordpressPost {
+//       nodes {
+//         content
+//         date
+//         template
+//         title
+//         type
+//         sticky
+//         slug
+//         path
+//         modified
+//         link
+//         guid
+//         format
+//         excerpt
+//         comment_status
+//         featured_media {
+//           alt_text
+//           caption
+//           id
+//           link
+//           path
+//           mime_type
+//           media_type
+//           source_url
+//           title
+//         }
+//         categories {
+//           name
+//           path
+//           slug
+//         }
+//       }
+//     }
+//   }
+// `

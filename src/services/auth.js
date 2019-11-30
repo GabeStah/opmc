@@ -7,8 +7,6 @@ export const getUser = () =>
 export const setUser = user =>
   window.localStorage.setItem("opmcUser", JSON.stringify(user))
 export const handleLogin = async request => {
-  console.log(`handleLoginrequest`)
-  console.log(request)
   const { password } = request
   // const res = await fetch(`/api/authenticate?password=${password}`)
   const res = await fetch(

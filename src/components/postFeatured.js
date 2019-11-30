@@ -14,15 +14,15 @@ export default class PostFeatured extends Component {
     return (
       <div className="flex flex-wrap flex-col-reverse sm:flex-row hover:bg-blue-100 hover:shadow-md">
         <Link
-          to={this.state.post.path}
+          to={this.state.post.fields.slug}
           className="flex flex-wrap no-underline hover:no-underline"
         >
           <div className="w-5/6 sm:w-1/2 p-6">
             <h3 className="text-3xl text-gray-800 font-bold leading-none">
-              {this.state.post.title}
+              {this.state.post.frontmatter.title}
             </h3>
             <h5 className={"mb-1 mt-2 text-sm"}>
-              {moment(this.state.post.date).fromNow()}
+              {moment(this.state.post.frontmatter.date).fromNow()}
             </h5>
             <div
               className="text-gray-600 mb-8"
@@ -34,12 +34,14 @@ export default class PostFeatured extends Component {
               }}
             />
           </div>
-          <div className="w-full sm:w-1/2 p-6">
-            <img
-              src={this.state.post.featured_media.source_url}
-              alt={this.state.post.featured_media.alt_text}
-            />
-          </div>
+          {this.state.post.frontmatter.image &&
+            <div className="w-full sm:w-1/2 p-6">
+              <img
+                src={this.state.post.frontmatter.image.replace("static/", "")}
+                alt={this.state.post.frontmatter.image.alt_text || ''}
+              />
+            </div>
+          }
         </Link>
       </div>
     )

@@ -26,7 +26,6 @@ const createMarkdownPages = async ({ graphql, actions, reporter }) => {
     return
   }
   result.data.allMarkdownRemark.edges.forEach(({ node }) => {
-    console.log(node.fields)
     createPage({
       path: node.fields.slug,
       component: markdownTemplate,

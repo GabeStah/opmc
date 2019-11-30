@@ -1,10 +1,8 @@
-import React, { Component, useState } from "react"
+import React, { useState } from "react"
 import moment from "moment"
-import Img from "gatsby-image"
-import { graphql, useStaticQuery } from "gatsby"
 
 export default (props) => {
-  const [post, setPost] = useState(props.post)
+  const [post] = useState(props.post)
   // const data = useStaticQuery(graphql`
   //     query {
   //         image: file(relativePath: { eq: ${post.image} }) {

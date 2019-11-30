@@ -6,7 +6,9 @@ import createMarkdownPosts from "./src/templates/createMarkdownPosts"
 exports.createPages = async ({ graphql, actions, reporter }) => {
   await createMarkdownPages({ graphql, actions })
   await createMarkdownPosts({ graphql, actions })
-  await createWordpressPages({ graphql, actions, reporter })
+  if (process.env.IMPORT_WORDPRESS && process.env.IMPORT_WORDPRESS === 'true') {
+    await createWordpressPages({ graphql, actions, reporter })
+  }
 }
 
 exports.createSchemaCustomization = ({ actions }) => {
