@@ -14,7 +14,7 @@ export const MarkdownPostTemplate = ({ data }) => {
     image: frontmatter.image,
     date: frontmatter.date,
     featured: frontmatter.featured,
-    tags: frontmatter.tags
+    // tags: frontmatter.tags
   }
 
   return (
@@ -39,7 +39,6 @@ export const pageQuery = graphql`
         date(formatString: "MMMM DD, YYYY")
         image
         featured
-        tags
         title
         type
       }

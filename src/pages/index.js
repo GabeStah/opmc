@@ -61,7 +61,6 @@ export const postList = graphql`
                 date
                 featured
                 image
-                tags
                 title
                 type
             }
