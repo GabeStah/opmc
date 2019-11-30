@@ -7,7 +7,8 @@ export const getUser = () =>
 export const setUser = user =>
   window.localStorage.setItem("opmcUser", JSON.stringify(user))
 export const handleLogin = async ({ password }) => {
-  const res = await fetch(`/api/authenticate?password=${password}`)
+  // const res = await fetch(`/api/authenticate?password=${password}`)
+  const res = await fetch(`/.netlify/functions/authenticate?password=${password}`)
   const success = await res.text()
   if (success === 'true') {
     return setUser({
