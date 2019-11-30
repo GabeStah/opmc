@@ -4,7 +4,7 @@ type: post
 title: Another Title of Featured Post
 date: 2019-11-30T05:44:07.073Z
 featured: true
-image: /static/images/uploads/steel-mill-4646843_1920.jpg
+image: /images/uploads/steel-mill-4646843_1920.jpg
 ---
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec mattis, velit ut mollis rutrum, massa purus maximus libero, in ornare arcu purus ac nisl. Aenean nec nisl vel arcu maximus mollis ut quis sapien. Donec sodales eros vel dignissim eleifend. Mauris id ullamcorper tellus. Sed ac sem sit amet est consequat venenatis eu et libero. Donec sit amet eleifend dolor. Proin pharetra, sem eget tincidunt sagittis, sem tortor feugiat tortor, ac ultricies orci nisi nec quam.
 
