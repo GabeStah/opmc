@@ -1,4 +1,4 @@
-if (process.env.NODE_ENV !== 'production') {
+if (process.env.NODE_ENV !== "production") {
   require("dotenv").config()
 }
 
@@ -14,21 +14,21 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `images`,
-        path: `${__dirname}/src/images`,
+        path: `${__dirname}/static/images`,
       },
     },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `markdown-pages`,
-        path: `${__dirname}/src/markdown/pages`,
+        path: `${__dirname}/content/pages`,
       },
     },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `markdown-posts`,
-        path: `${__dirname}/src/markdown/posts`,
+        path: `${__dirname}/content/posts`,
       },
     },
     `gatsby-transformer-remark`,
@@ -56,7 +56,7 @@ module.exports = {
         background_color: `#663399`,
         theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: `src/images/favicon/favicon-32x32.png`, // This path is relative to the root of the site.
+        icon: `static/images/favicon/favicon-32x32.png`, // This path is relative to the root of the site.
       },
     },
     {

@@ -15,7 +15,7 @@ class Login extends React.Component {
   }
 
   handleKeyDown = async event => {
-    if (event.key === 'Enter') {
+    if (event.key === "Enter") {
       event.preventDefault()
       if (await handleLogin(this.state)) {
         navigate(this.state.prevPath || `/`)
@@ -94,7 +94,7 @@ class Login extends React.Component {
                   type="password"
                   placeholder="**********"
                   name="password"
-                  autoComplete={'new-password'}
+                  autoComplete={"new-password"}
                   onChange={this.handleUpdate}
                   onKeyDown={this.handleKeyDown}
                 />
@@ -115,7 +115,7 @@ class Login extends React.Component {
             </div>
             <div className="md:flex md:items-center">
               <div className="md:w-1/3" />
-              <div className="md:w-2/3"/>
+              <div className="md:w-2/3" />
             </div>
           </form>
         </section>

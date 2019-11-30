@@ -1,4 +1,4 @@
-import { Link} from "gatsby"
+import { Link } from "gatsby"
 import React, { Component } from "react"
 
 export default class Nav extends Component {

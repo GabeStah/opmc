@@ -1,5 +1,6 @@
 import React, { Component } from "react"
 import moment from "moment"
+import Img from "gatsby-image"
 
 export default class Post extends Component {
   constructor(props) {
@@ -14,11 +15,10 @@ export default class Post extends Component {
       <section className="bg-white py-8">
         <div className="flex-1 bg-white rounded-t rounded-b-none overflow-hidden shadow">
           <div className="w-full sm:w-1/2 p-6">
-            {this.state.post.featured_media &&
-              this.state.post.featured_media.source_url && (
+            {this.state.post.image && (
                 <img
-                  src={this.state.post.featured_media.source_url}
-                  alt={this.state.post.featured_media.alt_text || ""}
+                  src={this.state.post.image}
+                  alt={this.state.post.image.alt_text || ""}
                 />
               )}
           </div>
@@ -37,3 +37,4 @@ export default class Post extends Component {
     )
   }
 }
+

@@ -5,7 +5,7 @@ import Hero from "../components/hero"
 import PostList from "../components/postList"
 import Featured from "../components/featured"
 import Layout from "../components/layout"
-import { graphql} from "gatsby"
+import { graphql } from "gatsby"
 
 const getPostsFromWordpress = data => {
   const { nodes: posts } = data.allWordpressPost

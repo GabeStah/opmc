@@ -3,31 +3,25 @@ import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import Post from "../components/post"
-import Page from "../components/page"
 
-export const MarkdownTemplate = ({ data }) => {
+export const MarkdownPostTemplate = ({ data }) => {
   const { markdownRemark } = data // data.markdownRemark holds your post data
   const { frontmatter, html } = markdownRemark
-  // Type
-  const type = frontmatter.type || "post"
 
-  const obj = {
+  const post = {
     content: html,
     title: frontmatter.title,
-  }
-
-  if (type === "post") {
-    obj.date = frontmatter.date
-    obj.featured_media = {
-      source_url: frontmatter.image,
-    }
+    image: frontmatter.image,
+    date: frontmatter.date,
+    featured: frontmatter.featured,
+    tags: frontmatter.tags
   }
 
   return (
     <Layout>
       <SEO title="Blog Post" />
       <section className={"p-10 pt-32"}>
-        {type === "post" ? <Post post={obj} /> : <Page page={obj} />}
+        <Post post={post} />
       </section>
     </Layout>
   )
@@ -35,12 +29,17 @@ export const MarkdownTemplate = ({ data }) => {
 
 export const pageQuery = graphql`
   query($path: String!) {
-    markdownRemark(frontmatter: { path: { eq: $path } }) {
+    markdownRemark(fields: { slug: { eq: $path } }) {
       html
+      excerpt
+      fields {
+        slug
+      }
       frontmatter {
         date(formatString: "MMMM DD, YYYY")
         image
-        path
+        featured
+        tags
         title
         type
       }
@@ -48,4 +47,4 @@ export const pageQuery = graphql`
   }
 `
 
-export default MarkdownTemplate
+export default MarkdownPostTemplate
