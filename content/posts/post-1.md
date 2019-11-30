@@ -1,10 +1,10 @@
 ---
-type: post
 layout: blog
+type: post
 title: My first blog post
-date: "2019-05-04"
+date: '2019-05-04'
 featured: true
-image: static/images/opmc-all.jpg
+image: /images/uploads/mountain-4650819_1920.jpg
 ---
 
 This is my first test post.
